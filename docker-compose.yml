@@ -1,0 +1,37 @@
+version: '2.1'
+
+services:
+  app:
+    image: audi-c3po-backend
+    build: .
+    volumes:
+      - .:/build
+    ports:
+      - "8000:8000"
+    depends_on:
+      mongo:
+        condition: service_healthy
+      # TODO, how to do healthcheck on neo4j? will this do? https://github.com/coreos/bugs/issues/1848
+    env_file:
+      - dev.env
+    links:
+      - neo4j
+      - mongo
+
+  mongo:
+    image: mongo:latest
+    ports:
+      - "27017:27017"
+    env_file:
+      - dev.env
+    healthcheck:
+      test: echo 'db.runCommand("ping").ok'
+      interval: 5s
+      timeout: 5s
+      retries: 12
+    command: mongod --smallfiles
+    volumes:
+      - mongo-volume:/data/db
+      
+volumes:
+  mongo-volume:

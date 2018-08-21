@@ -1,0 +1,12 @@
+Check C3PO api
+---
+tags:
+  - check api
+responses:
+  200:
+    description: Hello from c3po
+    schema:
+      properties:
+        message:
+          type: string
+          description: a simple interface to check if api is up

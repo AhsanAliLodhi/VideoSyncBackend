@@ -1,0 +1,33 @@
+Post a message
+---
+summary: Post a message
+tags:
+  - messages
+parameters:
+  - in: header
+    name: api_key
+    required: true
+    description: Put api_key here!
+    example: 95ba86b6-cbc8-431c-af09-fdc353d0dda1
+
+  - name: body
+    in: body
+    required: true
+    description: Put the messages payload here!
+    example:
+      message: hello world!
+
+responses:
+  500:
+    description: Something went wrong. Check the logs.
+  401:
+    description: Unauthorised, your api_key is missing or invalid.
+  201:
+    description: You have successfully sent a message!
+    consumes: application/json
+    schema:
+      id: messages
+      properties:
+        message:
+          type: string
+          description: the message

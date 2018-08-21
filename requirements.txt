@@ -1,0 +1,8 @@
+Flask
+pymongo
+watson-developer-cloud>=1.5.0
+flasgger
+bcrypt
+python-dotenv
+flask-cors
+neo4j-driver
