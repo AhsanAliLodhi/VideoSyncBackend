@@ -15,7 +15,6 @@ services:
     env_file:
       - dev.env
     links:
-      - neo4j
       - mongo
 
   mongo:

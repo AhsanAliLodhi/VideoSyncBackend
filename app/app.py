@@ -1,7 +1,6 @@
 from flask import Flask, jsonify, request
 from flasgger import Swagger, swag_from
 import os
-from .db import driver
 from flask_cors import CORS
 from .api.messages import messages_bp
 
@@ -32,7 +31,7 @@ template = {
 Swagger(audi_app, template=template)
 
 # blueprints
-audi_app.register_blueprint(messages_bp, url_prefix='/api')
+#audi_app.register_blueprint(messages_bp, url_prefix='/api')
 
 
 @audi_app.route("/")
@@ -41,4 +40,4 @@ def hello():
     """
       Easy way to check if API is online
     """
-    return jsonify({'message': 'VideoSync API?'})
+    return jsonify({'message': 'VideoSync API!'})
