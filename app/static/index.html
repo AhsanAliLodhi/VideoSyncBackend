@@ -4,9 +4,15 @@
 <meta name="google-signin-client_id" content="494372407836-fggd84br5flg9eei9je4t2l67d241rds.apps.googleusercontent.com">
 <script>
 	function onSignIn(auth){
-		chrome.runtime.sendMessage({api_info: JSON.stringify(auth)}, function(response) {
-			console.log(response);
-		});
+		if(chrome && chrome.runtime && chrome.runtime.sendMessage) {
+		chrome.runtime.sendMessage(
+			"coegdlggjehjkghbhllemdnallhekcdl",
+			{api_info: JSON.stringify(auth)},
+			function(response) {
+				console.log(response);
+			}
+		);
+		}
 	}
 </script>
 </head>
